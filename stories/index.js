@@ -1,13 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+import { configure, storiesOf } from '@storybook/react'
+import { linkTo } from '@storybook/addon-links'
 
-import { Button, Welcome } from '@storybook/react/demo';
+import { Welcome } from '@storybook/react/demo'
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />)
 
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>);
+const stories = require.context('../src', true, /.*stories((\.jsx?)|\/(index\.jsx?|.*?stories\.jsx?))$/i)
+
+function loadStories () {
+  stories.keys().forEach(stories)
+  // You can require as many stories as you need.
+}
+
+configure(loadStories, module)
