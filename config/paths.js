@@ -50,6 +50,19 @@ module.exports = {
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
+  componentAtoms: [
+    resolveApp('src/atoms'),
+    resolveApp('src/containers/molecules'),
+    resolveApp('src/containers/organisms'),
+    resolveApp('src/containers/templates'),
+    resolveApp('src/containers/pages'),
+
+    resolveApp('src/components/atoms'),
+    resolveApp('src/components/molecules'),
+    resolveApp('src/components/organisms'),
+    resolveApp('src/components/templates'),
+    resolveApp('src/components/pages')
+  ],
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
 };
