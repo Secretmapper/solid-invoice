@@ -1,4 +1,5 @@
 import React from 'react'
+import '../src/index.css'
 
 import { configure, storiesOf } from '@storybook/react'
 import { linkTo } from '@storybook/addon-links'
