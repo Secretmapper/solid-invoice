@@ -13,6 +13,8 @@ export default styled.div`
   padding-right: 1rem;
   position: relative;
 
+  transition: background 0.2s;
+
   ${props => !props.disabled && 'cursor: pointer;'}
   ${props => props.auto ? 'width: auto' : 'width: 100%'};
   ${props => props.filled && `

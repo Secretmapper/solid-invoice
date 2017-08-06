@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import AlignRight from 'AlignRight'
-import InvoiceLayout from 'InvoiceLayout'
-import InlineInput from 'InvoiceInlineInput'
-import Input from 'InvoiceInput'
-import UploadableImage from 'UploadableImage'
+import styled from 'styled-components'
+
 import Heading from './InvoiceHeading'
 import SubHeading from './InvoiceSubHeading'
-import styled from 'styled-components'
+import AlignRight from 'AlignRight'
+import Input from 'InvoiceInput'
+import UploadableImage from 'UploadableImage'
+
+import InvoiceLayout from 'InvoiceLayout'
+import InvoiceBreakdown from 'InvoiceBreakdown'
+import InlineInput from 'InvoiceInlineInput'
 
 const Label = styled(Input)`
   width: auto;
@@ -51,6 +54,33 @@ class Invoice extends Component {
               input={<Input placeholder='' value='₱ 75,087' disabled='disabled' />}
             />
           </AlignRight>
+        }
+        main={
+          <InvoiceBreakdown />
+        }
+        summary={
+          <AlignRight>
+            <InlineInput
+              label={<Label placeholder='Sub Total' value='Sub Total' />}
+              input={<Input placeholder='' value='₱ 75,087' disabled='disabled' />}
+            />
+            <InlineInput
+              label={<Label placeholder='Discounts' value='Discounts' />}
+              input={<Input placeholder='0%' value='' />}
+            />
+            <InlineInput
+              label={<Label placeholder='Tax' value='Tax' />}
+              input={<Input placeholder='0%' value='' />}
+            />
+            <InlineInput
+              bold
+              label={<Label placeholder='Total' value='Total' />}
+              input={<Input placeholder='' value='₱ 75,087' disabled='disabled' />}
+            />
+          </AlignRight>
+        }
+        addendum={
+          <Input textarea placeholder='Notes/Addendum' />
         }
       />
     )
