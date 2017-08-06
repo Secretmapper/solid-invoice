@@ -33,11 +33,13 @@
     "postcss-flexbugs-fixes": "3.0.0",
     "postcss-loader": "2.0.6",
     "promise": "7.1.1",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dev-utils": "^3.0.2",
     "react-dom": "^15.6.1",
     "react-dropzone": "^4.0.0",
     "react-error-overlay": "^1.0.9",
+    "react-redux": "^5.0.5",
     "react-test-renderer": "^15.6.1",
     "react-textarea-autosize": "^5.1.0",
     "recompose": "^0.24.0",
@@ -110,7 +112,12 @@
       "<rootDir>/src/components/molecules/",
       "<rootDir>/src/components/organisms/",
       "<rootDir>/src/components/pages/",
-      "<rootDir>/src/components/templates/"
+      "<rootDir>/src/components/templates/",
+      "<rootDir>/src/containers/atoms/",
+      "<rootDir>/src/containers/molecules/",
+      "<rootDir>/src/containers/organisms/",
+      "<rootDir>/src/containers/pages/",
+      "<rootDir>/src/containers/templates/"
     ]
   },
   "babel": {

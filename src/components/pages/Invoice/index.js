@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import Input from './Input'
 import Heading from './InvoiceHeading'
 import SubHeading from './InvoiceSubHeading'
 import AlignRight from 'AlignRight'
-import Input from 'InvoiceInput'
 import UploadableImage from 'UploadableImage'
 
 import InvoiceLayout from 'InvoiceLayout'
@@ -19,7 +20,22 @@ const Label = styled(Input)`
   }
 `
 
-class Invoice extends Component {
+export default class extends Component {
+  static childContextTypes = {
+    fields: PropTypes.object.isRequired,
+    changeValue: PropTypes.func.isRequired
+  }
+
+  getChildContext () {
+    const { fields } = this.props
+    const { activeInvoiceChangeField: changeValue } = this.props
+
+    return {
+      fields,
+      changeValue
+    }
+  }
+
   render () {
     return (
       <InvoiceLayout
@@ -27,7 +43,7 @@ class Invoice extends Component {
           <div>
             <Heading>INVOICE</Heading>
             <SubHeading>
-              NO. <Input placeholder='1' auto />
+              NO. <Input name='number' auto />
             </SubHeading>
           </div>
         }
@@ -38,28 +54,28 @@ class Invoice extends Component {
         }
         business={
           <div>
-            <Input textarea placeholder='Your Business' />
-            <Label placeholder='Bill To' value='Bill To' left />
-            <Input textarea placeholder='Who the invoice is for' />
+            <Input name='businessFrom' textarea placeholder='Your Business' />
+            <Label name='billToLabel' left />
+            <Input name='businessTo' textarea placeholder='Who the invoice is for' />
           </div>
         }
         terms={
           <AlignRight>
             <InlineInput
-              label={<Label placeholder='Date' value='Date' />}
-              input={<Input placeholder='August' />}
+              label={<Label name='dateLabel' />}
+              input={<Input name='date' placeholder='August' />}
             />
             <InlineInput
-              label={<Label placeholder='Payment Terms' value='Payment Terms' />}
-              input={<Input placeholder='Terms' />}
+              label={<Label name='paymentTermsLabel' />}
+              input={<Input name='terms' placeholder='Terms' />}
             />
             <InlineInput
-              label={<Label placeholder='Due Date' value='Due Date' />}
-              input={<Input placeholder='August' />}
+              label={<Label name='dueDateLabel' />}
+              input={<Input name='dueDate' placeholder='August' />}
             />
             <InlineInput
-              label={<Label placeholder='Balance Due ' value='Balance Due' />}
-              input={<Input placeholder='' value='₱ 75,087' disabled='disabled' />}
+              label={<Label name='balanceDueLabel' />}
+              input={<Input name='total' disabled='disabled' />}
             />
           </AlignRight>
         }
@@ -69,30 +85,28 @@ class Invoice extends Component {
         summary={
           <AlignRight>
             <InlineInput
-              label={<Label placeholder='Sub Total' value='Sub Total' />}
-              input={<Input placeholder='' value='₱ 75,087' disabled='disabled' />}
+              label={<Label name='subTotalLabel' />}
+              input={<Input name='subTotal' disabled='disabled' />}
             />
             <InlineInput
-              label={<Label placeholder='Discounts' value='Discounts' />}
-              input={<Input placeholder='0%' value='' />}
+              label={<Label name='discountLabel' />}
+              input={<Input name='discount' placeholder='0%' />}
             />
             <InlineInput
-              label={<Label placeholder='Tax' value='Tax' />}
-              input={<Input placeholder='0%' value='' />}
+              label={<Label name='taxLabel' />}
+              input={<Input name='tax' placeholder='0%' />}
             />
             <InlineInput
               bold
-              label={<Label placeholder='Total' value='Total' />}
-              input={<Input placeholder='' value='₱ 75,087' disabled='disabled' />}
+              label={<Label name='totalLabel' />}
+              input={<Input name='total' disabled='disabled' />}
             />
           </AlignRight>
         }
         addendum={
-          <Input textarea placeholder='Notes/Addendum' />
+          <Input name='notes' textarea placeholder='Notes/Addendum' />
         }
       />
     )
   }
 }
-
-export default Invoice

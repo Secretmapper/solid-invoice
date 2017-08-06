@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import 'normalize.css'
-import Invoice from 'Invoice'
+import InvoicePage from 'InvoicePage'
+
+import { Provider } from 'react-redux'
+import store from './redux'
 
 class App extends Component {
   render () {
     return (
-      <Invoice />
+      <Provider store={store}>
+        <InvoicePage />
+      </Provider>
     )
   }
 }
