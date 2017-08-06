@@ -29,14 +29,22 @@ class Invoice extends Component {
             <SubHeading>
               NO. <Input placeholder='1' auto />
             </SubHeading>
-            <Input textarea placeholder='Your Business' />
-            <Label placeholder='Bill To' value='Bill To' left />
-            <Input textarea placeholder='Who the invoice is for' />
           </div>
         }
         headerRight={
           <AlignRight>
             <UploadableImage />
+          </AlignRight>
+        }
+        business={
+          <div>
+            <Input textarea placeholder='Your Business' />
+            <Label placeholder='Bill To' value='Bill To' left />
+            <Input textarea placeholder='Who the invoice is for' />
+          </div>
+        }
+        terms={
+          <AlignRight>
             <InlineInput
               label={<Label placeholder='Date' value='Date' />}
               input={<Input placeholder='August' />}
