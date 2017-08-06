@@ -11,7 +11,6 @@ export default class extends Component {
   setInput = ref => { this.input = ref }
   onClickWrapper = _ => {
     if (this.input) {
-      console.log(this.input)
       this.input.focus()
     }
   }
