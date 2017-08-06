@@ -34,6 +34,7 @@
     "react-dev-utils": "^3.0.2",
     "react-dom": "^15.6.1",
     "react-error-overlay": "^1.0.9",
+    "react-textarea-autosize": "^5.1.0",
     "recompose": "^0.24.0",
     "redux": "^3.7.2",
     "redux-persist": "^4.8.3",
