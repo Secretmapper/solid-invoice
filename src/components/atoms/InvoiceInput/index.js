@@ -44,6 +44,7 @@ export default class extends Component {
 
     return (
       <Wrapper
+        data-input-wrapper
         active={active}
         auto={auto}
         className={className}
