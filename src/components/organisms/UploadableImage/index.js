@@ -9,7 +9,6 @@ export default compose(
   withHandlers({
     onDrop: ({ setAccepted }) => (accepted, rejected) => {
       setAccepted(accepted)
-      console.log(accepted)
     }
   })
 )(({ accepted, onDrop }) => (
