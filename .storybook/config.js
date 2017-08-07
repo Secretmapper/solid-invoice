@@ -1,9 +1,18 @@
-/* eslint-disable import/no-extraneous-dependencies, import/no-unresolved, import/extensions */
+import React from 'react'
+import 'style-loader!css-loader!../src/index.css'
 
-import { configure } from '@storybook/react';
+import { configure, storiesOf } from '@storybook/react'
+import { linkTo } from '@storybook/addon-links'
 
-function loadStories() {
-  require('../stories');
+import { Welcome } from '@storybook/react/demo'
+
+storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />)
+
+const stories = require.context('../src', true, /.*stories((\.jsx?)|\/(index\.jsx?|.*?stories\.jsx?))$/i)
+
+function loadStories () {
+  stories.keys().forEach(stories)
+  // You can require as many stories as you need.
 }
 
-configure(loadStories, module);
+configure(loadStories, module)
