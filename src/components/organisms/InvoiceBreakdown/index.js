@@ -5,7 +5,7 @@ import HeaderText from './HeaderText'
 import AddItem from './AddItem'
 import InvoiceItem from 'InvoiceItem'
 
-export default () => (
+export default ({ items, addItem, changeItem }) => (
   <Wrapper>
     <Header>
       <HeaderText width={[1 / 2, 1 / 2]} p={1}>
@@ -21,8 +21,14 @@ export default () => (
         Amount
       </HeaderText>
     </Header>
-    <InvoiceItem />
-    <AddItem>
+    {items.map((item, index) => (
+      <InvoiceItem
+        key={item.id}
+        item={item}
+        changeItem={changeItem}
+      />
+    ))}
+    <AddItem onClick={addItem}>
       Add Item
     </AddItem>
   </Wrapper>

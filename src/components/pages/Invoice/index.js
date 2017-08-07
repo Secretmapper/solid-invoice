@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import Input from './Input'
+import Input from 'Input'
 import Heading from './InvoiceHeading'
 import SubHeading from './InvoiceSubHeading'
 import AlignRight from 'AlignRight'
@@ -37,6 +37,8 @@ export default class extends Component {
   }
 
   render () {
+    const { items, activeInvoiceItemAdd, activeInvoiceItemChangeField } = this.props
+
     return (
       <InvoiceLayout
         headerLeft={
@@ -80,7 +82,11 @@ export default class extends Component {
           </AlignRight>
         }
         main={
-          <InvoiceBreakdown />
+          <InvoiceBreakdown
+            items={items}
+            addItem={activeInvoiceItemAdd}
+            changeItem={activeInvoiceItemChangeField}
+          />
         }
         summary={
           <AlignRight>
