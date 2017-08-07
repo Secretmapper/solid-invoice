@@ -56,24 +56,24 @@ export default class extends Component {
         }
         business={
           <div>
-            <Input name='businessFrom' textarea placeholder='Your Business' />
+            <Input name='businessFrom' textarea placeholder='Your Business (required)' />
             <Label name='billToLabel' left />
-            <Input name='businessTo' textarea placeholder='Who the invoice is for' />
+            <Input name='businessTo' textarea placeholder='Who the invoice is for (required)' />
           </div>
         }
         terms={
           <AlignRight>
             <InlineInput
               label={<Label name='dateLabel' />}
-              input={<Input name='date' placeholder='August' />}
+              input={<Input name='date' placeholder='Month Day, Year' />}
             />
             <InlineInput
               label={<Label name='paymentTermsLabel' />}
-              input={<Input name='terms' placeholder='Terms' />}
+              input={<Input name='terms' placeholder='Net 10' />}
             />
             <InlineInput
               label={<Label name='dueDateLabel' />}
-              input={<Input name='dueDate' placeholder='August' />}
+              input={<Input name='dueDate' placeholder='Month Day, Year' />}
             />
             <InlineInput
               label={<Label name='balanceDueLabel' />}
