@@ -3,15 +3,15 @@ import Wrapper from './Wrapper'
 import Side from './Side'
 import Main from './Main'
 import InvoicePane from 'InvoicePane'
-import InvoicePage from 'InvoicePage'
+import InvoicePage from 'Invoice'
 
-export default () => (
+export default ({ activeInvoice: { ...props }, activeInvoiceDownload, ...funcs }) => (
   <Wrapper>
     <Side>
-      <InvoicePane />
+      <InvoicePane onDownloadInvoice={activeInvoiceDownload} />
     </Side>
     <Main>
-      <InvoicePage />
+      <InvoicePage {...props} {...funcs} />
     </Main>
   </Wrapper>
 )

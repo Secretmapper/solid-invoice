@@ -38,6 +38,7 @@ export default class extends Component {
 
   render () {
     const { items, activeInvoiceItemAdd, activeInvoiceItemChangeField } = this.props
+    const error = false
 
     return (
       <InvoiceLayout
@@ -56,24 +57,24 @@ export default class extends Component {
         }
         business={
           <div>
-            <Input name='businessFrom' textarea placeholder='Your Business (required)' />
+            <Input name='businessFrom' textarea placeholder='Your Business (required)' error={error} />
             <Label name='billToLabel' left />
-            <Input name='businessTo' textarea placeholder='Who the invoice is for (required)' />
+            <Input name='businessTo' textarea placeholder='Who the invoice is for (required)' error={error} />
           </div>
         }
         terms={
           <AlignRight>
             <InlineInput
               label={<Label name='dateLabel' />}
-              input={<Input name='date' placeholder='Month Day, Year' />}
+              input={<Input name='date' placeholder='Month Day, Year' error={error} />}
             />
             <InlineInput
               label={<Label name='paymentTermsLabel' />}
-              input={<Input name='terms' placeholder='Net 10' />}
+              input={<Input name='terms' placeholder='Net 10' error={error} />}
             />
             <InlineInput
               label={<Label name='dueDateLabel' />}
-              input={<Input name='dueDate' placeholder='Month Day, Year' />}
+              input={<Input name='dueDate' placeholder='Month Day, Year' error={error} />}
             />
             <InlineInput
               label={<Label name='balanceDueLabel' />}
@@ -92,15 +93,15 @@ export default class extends Component {
           <AlignRight>
             <InlineInput
               label={<Label name='subTotalLabel' />}
-              input={<Input name='subTotal' disabled='disabled' />}
+              input={<Input name='subTotal' disabled='disabled' error={error} />}
             />
             <InlineInput
               label={<Label name='discountLabel' />}
-              input={<Input name='discount' placeholder='0%' />}
+              input={<Input name='discount' placeholder='0%' error={error} />}
             />
             <InlineInput
               label={<Label name='taxLabel' />}
-              input={<Input name='tax' placeholder='0%' />}
+              input={<Input name='tax' placeholder='0%' error={error} />}
             />
             <InlineInput
               bold

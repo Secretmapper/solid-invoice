@@ -1,6 +1,7 @@
 import { compose, defaultProps, mapProps } from 'recompose'
 import TextareaAutosize from 'react-textarea-autosize'
 import styled, { css } from 'styled-components'
+import { palette } from 'styled-theme'
 
 const mixin = css`
   ${props => !props.disabled && 'cursor: pointer;'}
@@ -15,17 +16,17 @@ const mixin = css`
   width: 100%;
 
   &::placeholder {
-    color: #afcbda;
+    color: ${palette(2)};
   }
 
   transform: translate3d(${props => props.filled ? '0' : '0.5rem'}, 0, 0);
-  transition: transform3d 0.2s;
+  transition: transform 0.2s;
 `
 
 export const Input = styled.input`${props => mixin}`
 
 const propedTextarea = compose(
-  mapProps(({ filled, ...props }) => (props)),
+  mapProps(({ filled, palette, ...props }) => (props)),
   defaultProps({ minRows: 3 })
 )(TextareaAutosize)
 

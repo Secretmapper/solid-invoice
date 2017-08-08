@@ -1,12 +1,24 @@
 import styled from 'styled-components'
+import { lighten, darken } from 'polished'
+import { ifProp } from 'styled-tools'
+import { palette } from 'styled-theme'
 import { Input, Textarea } from './Input'
 
+const darkenPalette = (n, index) => props => darken(n, palette(index)(props))
+const lightenPalette = (n, index) => props => lighten(n, palette(index)(props))
+
 export default styled.div`
-  background: ${props => props.active ? '#fafdff' : '#f1faff'};
+  background: ${
+    ifProp(
+      ['active'],
+      lightenPalette(0.02, 0),
+      palette(0)
+    )
+  };
   border-radius: 2px;
-  border: 1px solid #d1e5f0;
+  border: 1px solid ${palette(1)};
   box-sizing: border-box;
-  color: #465964;
+  color: ${palette(2)};
   display: inline-block;
   padding: 0.325rem 0.5rem;
   padding-left: 0;
@@ -24,14 +36,14 @@ export default styled.div`
 
   &:hover {
     ${props => !props.disabled && `
-      background: #e4f3fa;
-      border-color: #d1e5f0;
-      color: #9cb6c4 !important;
+      background: ${darkenPalette(0.02, 0)(props)};
+      border-color: ${darkenPalette(0.02, 1)(props)};
+      color: ${palette(2)} !important;
     `}
 
     ${props => props.active && `
-      background: #fafdff;
-      border-color: #9cb6c4;
+      background: ${lightenPalette(0.1, 0)(props)};
+      border-color: ${darkenPalette(0.2, 1)(props)};
     `};
   }
 

@@ -52,6 +52,9 @@ export const Actions = {
   activeInvoiceItemChangeField: (id, label, value) => ({
     type: 'ACTIVE_INVOICE_ITEM_CHANGE_FIELD',
     payload: { id, label, value }
+  }),
+  activeInvoiceDownload: _ => ({
+    type: 'ACTIVE_INVOICE_DOWNLOAD'
   })
 }
 
