@@ -23,22 +23,25 @@ const Label = styled(Input)`
 export default class extends Component {
   static childContextTypes = {
     fields: PropTypes.object.isRequired,
-    changeValue: PropTypes.func.isRequired
+    changeValue: PropTypes.func.isRequired,
+    submit: PropTypes.bool,
+    submitAnimating: PropTypes.bool
   }
 
   getChildContext () {
-    const { fields } = this.props
+    const { fields, meta: { triedToSubmit: submit, submitAnimating } } = this.props
     const { activeInvoiceChangeField: changeValue } = this.props
 
     return {
       fields,
-      changeValue
+      changeValue,
+      submit,
+      submitAnimating
     }
   }
 
   render () {
     const { items, activeInvoiceItemAdd, activeInvoiceItemChangeField } = this.props
-    const error = false
 
     return (
       <InvoiceLayout
@@ -57,24 +60,24 @@ export default class extends Component {
         }
         business={
           <div>
-            <Input name='businessFrom' textarea placeholder='Your Business (required)' error={error} />
+            <Input name='businessFrom' textarea placeholder='Your Business (required)' required />
             <Label name='billToLabel' left />
-            <Input name='businessTo' textarea placeholder='Who the invoice is for (required)' error={error} />
+            <Input name='businessTo' textarea placeholder='Who the invoice is for (required)' required />
           </div>
         }
         terms={
           <AlignRight>
             <InlineInput
               label={<Label name='dateLabel' />}
-              input={<Input name='date' placeholder='Month Day, Year' error={error} />}
+              input={<Input name='date' placeholder='Month Day, Year' />}
             />
             <InlineInput
               label={<Label name='paymentTermsLabel' />}
-              input={<Input name='terms' placeholder='Net 10' error={error} />}
+              input={<Input name='terms' placeholder='Net 10' />}
             />
             <InlineInput
               label={<Label name='dueDateLabel' />}
-              input={<Input name='dueDate' placeholder='Month Day, Year' error={error} />}
+              input={<Input name='dueDate' placeholder='Month Day, Year' />}
             />
             <InlineInput
               label={<Label name='balanceDueLabel' />}
@@ -93,15 +96,15 @@ export default class extends Component {
           <AlignRight>
             <InlineInput
               label={<Label name='subTotalLabel' />}
-              input={<Input name='subTotal' disabled='disabled' error={error} />}
+              input={<Input name='subTotal' disabled='disabled' />}
             />
             <InlineInput
               label={<Label name='discountLabel' />}
-              input={<Input name='discount' placeholder='0%' error={error} />}
+              input={<Input name='discount' placeholder='0%' />}
             />
             <InlineInput
               label={<Label name='taxLabel' />}
-              input={<Input name='tax' placeholder='0%' error={error} />}
+              input={<Input name='tax' placeholder='0%' />}
             />
             <InlineInput
               bold

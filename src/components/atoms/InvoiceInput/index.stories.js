@@ -9,6 +9,18 @@ storiesOf('atoms.InvoiceInput', module)
   .add('disabled with value', () => (
     <Input value='Value' disabled='disabled' />
   ))
+  .add('(submitted/tried to submit)', () => (
+    <Input submit required />
+  ))
+  .add('(submitted/tried to submit) animating', () => (
+    <Input submit submitAnimating required />
+  ))
   .add('textarea', () => (
     <Input textarea />
+  ))
+  .add('textarea (submitted/tried to submit)', () => (
+    <Input textarea submit required />
+  ))
+  .add('textarea (submitted/tried to submit) animating', () => (
+    <Input textarea submit submitAnimating required />
   ))

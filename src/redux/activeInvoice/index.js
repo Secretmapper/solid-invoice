@@ -34,6 +34,24 @@ export default function (state = initialState, action) {
           (item) => (item.id === id) ? itemReducer(item, action) : item
         )
       }
+    case 'ACTIVE_INVOICE_DOWNLOAD':
+      return {
+        ...state,
+        meta: {
+          ...state.meta,
+          triedToSubmit: true,
+          submitAnimating: true
+        }
+      }
+    case 'ACTIVE_INVOICE_DOWNLOAD_ANIMATE_END':
+      return {
+        ...state,
+        meta: {
+          ...state.meta,
+          triedToSubmit: true,
+          submitAnimating: false
+        }
+      }
     default:
       return state
   }
@@ -53,9 +71,13 @@ export const Actions = {
     type: 'ACTIVE_INVOICE_ITEM_CHANGE_FIELD',
     payload: { id, label, value }
   }),
-  activeInvoiceDownload: _ => ({
-    type: 'ACTIVE_INVOICE_DOWNLOAD'
-  })
+  activeInvoiceDownload: _ => dispatch => {
+    dispatch({ type: 'ACTIVE_INVOICE_DOWNLOAD' })
+    setTimeout(
+      _ => dispatch({ type: 'ACTIVE_INVOICE_DOWNLOAD_ANIMATE_END' }),
+      300
+    )
+  }
 }
 
 export const connectActiveInvoice = (selector) => connect(

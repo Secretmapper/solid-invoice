@@ -27,7 +27,8 @@ export default class extends Component {
   render () {
     const { onBlur, onClickWrapper, setInput, onChange, onFocus } = this
     const { active } = this.state
-    const { auto, className, placeholder, disabled, error, textarea } = this.props
+    const { auto, className, placeholder, disabled, required, textarea } = this.props
+    const { submit, submitAnimating } = this.props
     const value = this.props.value ? this.props.value : this.state.value
 
     const filled = !active && value && value.length > 0
@@ -43,7 +44,8 @@ export default class extends Component {
     }
 
     const filling = (filled || active)
-    const palette = !error || filling ? 'primary' : 'danger'
+    const error = required && submit && !filling
+    const palette = !error ? 'primary' : 'danger'
 
     return (
       <Wrapper
@@ -55,7 +57,8 @@ export default class extends Component {
         filled={filled}
         onClick={onClickWrapper}
         palette={palette}
-        error
+        error={error}
+        errorAnimating={error && submitAnimating}
       >
         {textarea
           ? <Textarea palette={palette} data-input {...inputProps} inputRef={setInput} />

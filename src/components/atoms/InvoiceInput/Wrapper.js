@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { lighten, darken } from 'polished'
 import { ifProp } from 'styled-tools'
 import { palette } from 'styled-theme'
@@ -7,7 +7,28 @@ import { Input, Textarea } from './Input'
 const darkenPalette = (n, index) => props => darken(n, palette(index)(props))
 const lightenPalette = (n, index) => props => lighten(n, palette(index)(props))
 
+const px = '15px'
+const errorAnimation = keyframes`
+  0% {
+    transform: scale(1) translateX(-${px});
+  }
+  25% {
+    transform: scale(1) translateX(${px});
+  }
+  50% {
+    transform: scale(1) translateX(-${px});
+  }
+  75% {
+    transform: scale(1) translateX(${px});
+  }
+  100% {
+    transform: scale(1) translateX(0);
+  }
+`
+
 export default styled.div`
+  ${props => props.errorAnimating && `animation: ${errorAnimation} ease-in-out 0.3s;`}
+
   background: ${
     ifProp(
       ['active'],

@@ -5,7 +5,9 @@ import Input from 'InvoiceInput'
 export default class extends Component {
   static contextTypes = {
     fields: PropTypes.object.isRequired,
-    changeValue: PropTypes.func.isRequired
+    changeValue: PropTypes.func.isRequired,
+    submit: PropTypes.bool,
+    submitAnimating: PropTypes.bool
   }
 
   onChange = value => {
@@ -16,7 +18,7 @@ export default class extends Component {
   }
 
   render () {
-    const { fields } = this.context
+    const { fields, submit, submitAnimating } = this.context
     const { name, children, value, placeholder, ...props } = this.props
 
     return (
@@ -24,6 +26,8 @@ export default class extends Component {
         placeholder={placeholder}
         value={value || (fields[name] != null && String(fields[name]))}
         onChange={this.onChange}
+        submit={submit}
+        submitAnimating={submitAnimating}
         {...props}
       >
         {children}

@@ -2,6 +2,10 @@ export const TYPE_PERCENTAGE = 'PERCENTAGE'
 export const TYPE_FLAT = 'FLAT'
 
 export default {
+  meta: {
+    submitAnimating: false,
+    triedToSubmit: false
+  },
   items: [],
   fields: {
     number: 1,
