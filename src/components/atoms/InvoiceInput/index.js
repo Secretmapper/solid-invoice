@@ -27,7 +27,7 @@ export default class extends Component {
   render () {
     const { onBlur, onClickWrapper, setInput, onChange, onFocus } = this
     const { active } = this.state
-    const { auto, className, placeholder, disabled, required, textarea } = this.props
+    const { auto, className, placeholder, disabled, required, simple, textarea } = this.props
     const { submit, submitAnimating } = this.props
     const value = this.props.value ? this.props.value : this.state.value
 
@@ -40,7 +40,8 @@ export default class extends Component {
       value,
       onChange,
       onBlur,
-      onFocus
+      onFocus,
+      simple
     }
 
     const filling = (filled || active)
@@ -51,6 +52,7 @@ export default class extends Component {
       <Wrapper
         data-input-wrapper
         active={active}
+        simple={simple}
         auto={auto}
         className={className}
         disabled={disabled}

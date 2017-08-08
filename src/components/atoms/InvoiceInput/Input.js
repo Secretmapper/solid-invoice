@@ -19,14 +19,14 @@ const mixin = css`
     color: ${palette(2)};
   }
 
-  transform: translate3d(${props => props.filled ? '0' : '0.5rem'}, 0, 0);
+  transform: translate3d(${props => props.filled && !props.simple ? '0' : '0.5rem'}, 0, 0);
   transition: transform 0.2s;
 `
 
 export const Input = styled.input`${props => mixin}`
 
 const propedTextarea = compose(
-  mapProps(({ filled, palette, ...props }) => (props)),
+  mapProps(({ filled, palette, simple, ...props }) => (props)),
   defaultProps({ minRows: 3 })
 )(TextareaAutosize)
 

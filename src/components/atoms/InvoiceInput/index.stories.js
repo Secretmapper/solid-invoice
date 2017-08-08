@@ -12,6 +12,9 @@ storiesOf('atoms.InvoiceInput', module)
   .add('(submitted/tried to submit)', () => (
     <Input submit required />
   ))
+  .add('simple', () => (
+    <Input simple />
+  ))
   .add('(submitted/tried to submit) animating', () => (
     <Input submit submitAnimating required />
   ))

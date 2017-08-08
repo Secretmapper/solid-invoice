@@ -50,7 +50,7 @@ export default styled.div`
 
   ${props => !props.disabled && 'cursor: pointer;'}
   ${props => props.auto ? 'width: auto' : 'width: 100%'};
-  ${props => props.filled && `
+  ${props => props.filled && !props.simple && `
     background: none;
     border: 1px solid rgba(0, 0, 0, 0);
   `}
