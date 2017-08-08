@@ -1,4 +1,4 @@
-import initialState, { items, TYPE_FLAT, TYPE_PERCENTAGE } from './__fixtures__/initialState'
+import initialState, { items, TYPE_PERCENTAGE } from './__fixtures__/initialState'
 import { withTotal } from './utils'
 
 describe('activeInvoice utils', () => {

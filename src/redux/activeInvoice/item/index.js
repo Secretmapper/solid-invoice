@@ -1,4 +1,3 @@
-import { connect } from 'react-redux'
 import uiid from 'uuid/v1'
 
 const initialState = {
@@ -23,7 +22,6 @@ export default function (state, action) {
       return {
         ...state
       }
-      break
     case 'ACTIVE_INVOICE_ITEM_CHANGE_FIELD':
       if (action.payload.label in initialState) {
         const { label, value } = action.payload
@@ -40,6 +38,8 @@ export default function (state, action) {
         newState.amount = amount
 
         return newState
+      } else {
+        return state
       }
     default:
       return state

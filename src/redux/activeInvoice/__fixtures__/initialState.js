@@ -35,4 +35,4 @@ export const items = [
   { description: '', quantity: 1, rate: 1 },
   { description: '', quantity: 5, rate: 5 },
   { description: '', quantity: 10, rate: 15 }
-] 
+]
