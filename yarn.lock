@@ -13,6 +13,10 @@
     react-inspector "^2.1.1"
     uuid "^3.1.0"
 
+"@storybook/addon-centered@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-centered/-/addon-centered-3.2.0.tgz#5c62b2a61990b814cbf7427500310311407a7fa7"
+
 "@storybook/addon-links@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-3.2.0.tgz#28c73d1fd7fa37591139f3fb16e60a43113ad643"

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import InvoicePage from 'InvoicePage'
+import Main from 'Main'
 
 import { Provider } from 'react-redux'
 import store from './redux'
@@ -8,7 +8,7 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <InvoicePage />
+        <Main />
       </Provider>
     )
   }
