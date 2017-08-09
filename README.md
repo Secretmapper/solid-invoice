@@ -1,7 +1,5 @@
 ![Solid Invoice](logo.jpg)
 
-# Solid Invoice
-
 ## Introduction
 
 Solid Invoice is a super simple invoice generator
