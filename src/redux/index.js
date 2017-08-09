@@ -6,13 +6,7 @@ const reducers = combineReducers({
   activeInvoice
 })
 
-const hasReduxDevTools = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__
-const isProduction = process.env.NODE_ENV === 'production'
-
-const devtools = (hasReduxDevTools && !isProduction)
-  ? window.__REDUX_DEVTOOLS_EXTENSION__()
-  : undefined
-
-const enhancers = compose(applyMiddleware(thunk), devtools)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const enhancers = composeEnhancers(applyMiddleware(thunk))
 
 export default createStore(reducers, enhancers)
