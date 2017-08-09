@@ -41,7 +41,7 @@ export default class extends Component {
   }
 
   render () {
-    const { items, activeInvoiceItemAdd, activeInvoiceItemChangeField } = this.props
+    const { currency, items, activeInvoiceItemAdd, activeInvoiceItemChangeField } = this.props
 
     return (
       <InvoiceLayout
@@ -81,7 +81,7 @@ export default class extends Component {
             />
             <InlineInput
               label={<Label name='balanceDueLabel' />}
-              input={<Input name='total' disabled='disabled' />}
+              input={<Input prefix={currency.symbol} name='total' disabled='disabled' />}
             />
           </AlignRight>
         }
@@ -90,13 +90,14 @@ export default class extends Component {
             items={items}
             addItem={activeInvoiceItemAdd}
             changeItem={activeInvoiceItemChangeField}
+            currency={currency}
           />
         }
         summary={
           <AlignRight>
             <InlineInput
               label={<Label name='subTotalLabel' />}
-              input={<Input name='subTotal' disabled='disabled' />}
+              input={<Input prefix={currency.symbol} name='subTotal' disabled='disabled' />}
             />
             <InlineInput
               label={<Label name='discountLabel' />}
@@ -109,7 +110,7 @@ export default class extends Component {
             <InlineInput
               bold
               label={<Label name='totalLabel' />}
-              input={<Input name='total' disabled='disabled' />}
+              input={<Input prefix={currency.symbol} name='total' disabled='disabled' />}
             />
           </AlignRight>
         }

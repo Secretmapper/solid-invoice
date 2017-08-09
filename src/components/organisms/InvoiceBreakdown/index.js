@@ -5,7 +5,7 @@ import HeaderText from './HeaderText'
 import AddItem from './AddItem'
 import InvoiceItem from 'InvoiceItem'
 
-export default ({ items, addItem, changeItem }) => (
+export default ({ items, addItem, changeItem, currency }) => (
   <Wrapper>
     <Header>
       <HeaderText width={[1 / 2, 1 / 2]} p={1}>
@@ -26,6 +26,7 @@ export default ({ items, addItem, changeItem }) => (
         key={item.id}
         item={item}
         changeItem={changeItem}
+        currency={currency}
       />
     ))}
     <AddItem onClick={addItem}>

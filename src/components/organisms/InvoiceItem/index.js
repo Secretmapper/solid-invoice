@@ -20,6 +20,8 @@ export default class extends Component {
   }
 
   render () {
+    const { currency } = this.props
+
     return (
       <Wrapper>
         <Grid width={[1, 1 / 2]} p={1}>
@@ -30,11 +32,11 @@ export default class extends Component {
             <Input name='quantity' placeholder='Quantity' />
           </Grid>
           <Grid width={[1 / 2]} p={1}>
-            <Input name='rate' placeholder='Rate' />
+            <Input prefix={currency.symbol} name='rate' placeholder='Rate' />
           </Grid>
         </Grid>
         <Grid width={[1, 1 / 6]} p={1}>
-          <Input name='amount' disabled='disabled' />
+          <Input prefix={currency.symbol} name='amount' disabled='disabled' />
         </Grid>
       </Wrapper>
     )

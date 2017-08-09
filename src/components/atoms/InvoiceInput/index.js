@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Prefix from './Prefix'
 import Wrapper from './Wrapper'
 import { Input, Textarea } from './Input'
 
@@ -27,7 +28,8 @@ export default class extends Component {
   render () {
     const { onBlur, onClickWrapper, setInput, onChange, onFocus } = this
     const { active } = this.state
-    const { auto, className, placeholder, disabled, required, simple, textarea } = this.props
+    const { className, placeholder, disabled, required } = this.props
+    const { auto, prefix, simple, textarea } = this.props
     const { submit, submitAnimating } = this.props
     const value = this.props.value ? this.props.value : this.state.value
 
@@ -37,11 +39,12 @@ export default class extends Component {
       disabled,
       filled,
       placeholder,
-      value,
+      value: disabled && prefix ? `${prefix} ${value}` : value,
       onChange,
       onBlur,
       onFocus,
-      simple
+      simple,
+      prefix
     }
 
     const filling = (filled || active)
@@ -62,6 +65,7 @@ export default class extends Component {
         error={error}
         errorAnimating={error && submitAnimating}
       >
+        {!disabled && prefix && <Prefix>{prefix}</Prefix>}
         {textarea
           ? <Textarea palette={palette} data-input {...inputProps} inputRef={setInput} />
           : <Input palette={palette} data-input {...inputProps} innerRef={setInput} />

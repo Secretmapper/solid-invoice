@@ -7,13 +7,15 @@ const mixin = css`
   ${props => !props.disabled && 'cursor: pointer;'}
   background: none;
   border: 0;
+  box-sizing: border-box;
   color: black;
   outline: none;
   overflow: visible;
+  display: inline-block;
   resize: none;
-  will-change: transform;
   height: 100%;
   width: 100%;
+  will-change: transform;
 
   &::placeholder {
     color: ${palette(2)};

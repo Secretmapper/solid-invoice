@@ -15,6 +15,12 @@ storiesOf('atoms.InvoiceInput', module)
   .add('simple', () => (
     <Input simple />
   ))
+  .add('prefix', () => (
+    <Input prefix='$' value='1' />
+  ))
+  .add('prefix disabled', () => (
+    <Input prefix='$' value='1' disabled />
+  ))
   .add('(submitted/tried to submit) animating', () => (
     <Input submit submitAnimating required />
   ))

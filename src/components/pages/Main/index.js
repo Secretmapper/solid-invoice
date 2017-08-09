@@ -21,7 +21,7 @@ export default compose(
     }
   })
 )(({
-  activeInvoice: { currency, ...props },
+  activeInvoice: { ...props },
   activeInvoiceDownload,
 
   onPickCurrency,
@@ -43,7 +43,7 @@ export default compose(
       <InvoicePane
         onDownloadInvoice={activeInvoiceDownload}
         onOpenCurrencyPicker={openPicker}
-        currency={currency}
+        currency={props.currency}
       />
     </Side>
     <Main>

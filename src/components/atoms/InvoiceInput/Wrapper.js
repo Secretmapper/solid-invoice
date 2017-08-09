@@ -40,7 +40,7 @@ export default styled.div`
   border: 1px solid ${palette(1)};
   box-sizing: border-box;
   color: ${palette(2)};
-  display: inline-block;
+  display: inline-flex;
   padding: 0.325rem 0.5rem;
   padding-left: 0;
   padding-right: 1rem;
