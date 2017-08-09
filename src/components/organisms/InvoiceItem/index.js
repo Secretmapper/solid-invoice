@@ -24,18 +24,18 @@ export default class extends Component {
 
     return (
       <Wrapper>
-        <Grid width={[1, 1 / 2]} p={1}>
+        <Grid width={[1, 1, 1, 1 / 2]} p={1}>
           <Input textarea name='description' placeholder='Invoice Item Description' />
         </Grid>
-        <Grid width={[1, 2 / 6]}>
-          <Grid width={[1 / 2]} p={1}>
+        <Grid width={[1, 1, 1, 2 / 6]}>
+          <Grid width={[1, 1, 1 / 2]} p={1}>
             <Input name='quantity' placeholder='Quantity' />
           </Grid>
-          <Grid width={[1 / 2]} p={1}>
+          <Grid width={[1, 1, 1 / 2]} p={1}>
             <Input prefix={currency.symbol} name='rate' placeholder='Rate' />
           </Grid>
         </Grid>
-        <Grid width={[1, 1 / 6]} p={1}>
+        <Grid width={[1, 1, 1, 1 / 6]} p={1}>
           <Input prefix={currency.symbol} name='amount' disabled='disabled' />
         </Grid>
       </Wrapper>

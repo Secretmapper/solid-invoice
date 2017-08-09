@@ -3,8 +3,13 @@ import Paper from 'Paper'
 
 export default styled.main`
   overflow: scroll;
-  padding: 40px 60px;
+  box-sizing: border-box;
+  padding: 20px;
   width: 100%;
+
+  @media screen and (min-width: 64em) {
+    padding: 40px 60px;
+  }
 
   & ${Paper} {
     margin: 0 auto;

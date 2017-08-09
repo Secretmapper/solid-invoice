@@ -8,16 +8,16 @@ import InvoiceItem from 'InvoiceItem'
 export default ({ items, addItem, changeItem, currency }) => (
   <Wrapper>
     <Header>
-      <HeaderText width={[1 / 2, 1 / 2]} p={1}>
+      <HeaderText width={[1 / 2, 1 / 2, 1 / 2, 1 / 2]} p={1}>
         Description
       </HeaderText>
-      <HeaderText width={[1 / 2, 1 / 6]} p={1}>
+      <HeaderText width={[1 / 2, 1 / 2, 1 / 2, 1 / 6]} p={1}>
         Quantity
       </HeaderText>
-      <HeaderText width={[1 / 2, 1 / 6]} p={1}>
+      <HeaderText width={[1 / 2, 1 / 2, 1 / 2, 1 / 6]} p={1}>
         Rate
       </HeaderText>
-      <HeaderText width={[1 / 2, 1 / 6]} p={1}>
+      <HeaderText width={[1 / 2, 1 / 2, 1 / 2, 1 / 6]} p={1}>
         Amount
       </HeaderText>
     </Header>
