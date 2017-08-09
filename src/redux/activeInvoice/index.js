@@ -43,6 +43,12 @@ export default function (state = initialState, action) {
           submitAnimating: true
         }
       }
+    case 'ACTIVE_INVOICE_SET_CURRENCY':
+      const { currency } = action.payload
+      return {
+        ...state,
+        currency
+      }
     case 'ACTIVE_INVOICE_DOWNLOAD_ANIMATE_END':
       return {
         ...state,
@@ -70,6 +76,10 @@ export const Actions = {
   activeInvoiceItemChangeField: (id, label, value) => ({
     type: 'ACTIVE_INVOICE_ITEM_CHANGE_FIELD',
     payload: { id, label, value }
+  }),
+  activeInvoiceSetCurrency: currency => ({
+    type: 'ACTIVE_INVOICE_SET_CURRENCY',
+    payload: { currency }
   }),
   activeInvoiceDownload: _ => dispatch => {
     dispatch({ type: 'ACTIVE_INVOICE_DOWNLOAD' })

@@ -1,3 +1,5 @@
+import currencies from '../../../lib/currencies'
+
 export const TYPE_PERCENTAGE = 'PERCENTAGE'
 export const TYPE_FLAT = 'FLAT'
 
@@ -6,6 +8,7 @@ export default {
     submitAnimating: false,
     triedToSubmit: false
   },
+  currency: currencies['USD'],
   items: [],
   fields: {
     number: 1,
