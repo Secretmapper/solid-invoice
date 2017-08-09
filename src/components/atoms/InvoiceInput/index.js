@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Prefix from './Prefix'
+import Suffix from './Suffix'
 import Wrapper from './Wrapper'
 import { Input, Textarea } from './Input'
 
@@ -25,11 +26,15 @@ export default class extends Component {
     onChange ? onChange(value) : this.setState({ value })
   }
 
+  onClickSuffix = e => {
+    e.stopPropagation()
+  }
+
   render () {
-    const { onBlur, onClickWrapper, setInput, onChange, onFocus } = this
+    const { onBlur, onClickWrapper, setInput, onChange, onFocus, onClickSuffix } = this
     const { active } = this.state
     const { className, placeholder, disabled, required } = this.props
-    const { auto, prefix, simple, textarea } = this.props
+    const { auto, prefix, suffix, simple, textarea } = this.props
     const { submit, submitAnimating } = this.props
     const value = this.props.value ? this.props.value : this.state.value
 
@@ -70,6 +75,7 @@ export default class extends Component {
           ? <Textarea palette={palette} data-input {...inputProps} inputRef={setInput} />
           : <Input palette={palette} data-input {...inputProps} innerRef={setInput} />
         }
+        {!disabled && suffix && <Suffix onClick={onClickSuffix}>{suffix}</Suffix>}
       </Wrapper>
     )
   }

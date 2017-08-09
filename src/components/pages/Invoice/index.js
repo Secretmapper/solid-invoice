@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
+import {
+  TYPE_FLAT,
+  TYPE_PERCENTAGE
+} from '../../../redux/activeInvoice/__fixtures__/initialState'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Input from 'Input'
+import DropdownInput from './DropdownInput'
 import Heading from './InvoiceHeading'
 import SubHeading from './InvoiceSubHeading'
 import AlignRight from 'AlignRight'
 import UploadableImage from 'UploadableImage'
+import ListItem from 'ListItem'
 
 import InvoiceLayout from 'InvoiceLayout'
 import InvoiceBreakdown from 'InvoiceBreakdown'
@@ -53,10 +59,16 @@ export default class extends Component {
     }
   }
 
+  changeField = (field, value) => _ => {
+    const { activeInvoiceChangeField } = this.props
+
+    activeInvoiceChangeField(field, value)
+  }
+
   render () {
-    const { onUpload } = this
+    const { changeField, onUpload } = this
     const { currency, items } = this.props
-    const { fields: { logo } } = this.props
+    const { fields: { logo, taxType, discountType } } = this.props
     const {
       activeInvoiceItemAdd,
       activeInvoiceItemChangeField,
@@ -122,11 +134,45 @@ export default class extends Component {
             />
             <InlineInput
               label={<Label name='discountLabel' />}
-              input={<Input name='discount' placeholder='0%' />}
+              input={
+                <DropdownInput
+                  name='discount'
+                  placeholder='0'
+                  prefix={discountType === TYPE_FLAT ? currency.symbol : '%'}
+                >
+                  <ListItem
+                    name='Flat'
+                    right={'(' + currency.symbol + ')'}
+                    onClick={changeField('discountType', TYPE_FLAT)}
+                  />
+                  <ListItem
+                    name='Percentage'
+                    right='(%)'
+                    onClick={changeField('discountType', TYPE_PERCENTAGE)}
+                  />
+                </DropdownInput>
+              }
             />
             <InlineInput
               label={<Label name='taxLabel' />}
-              input={<Input name='tax' placeholder='0%' />}
+              input={
+                <DropdownInput
+                  name='tax'
+                  placeholder='0'
+                  prefix={taxType === TYPE_FLAT ? currency.symbol : '%'}
+                >
+                  <ListItem
+                    name='Flat'
+                    right={'(' + currency.symbol + ')'}
+                    onClick={changeField('taxType', TYPE_FLAT)}
+                  />
+                  <ListItem
+                    name='Percentage'
+                    right='(%)'
+                    onClick={changeField('taxType', TYPE_PERCENTAGE)}
+                  />
+                </DropdownInput>
+              }
             />
             <InlineInput
               bold
