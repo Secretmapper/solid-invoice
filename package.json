@@ -42,6 +42,7 @@
     "react-dom": "^15.6.1",
     "react-dropzone": "^4.0.0",
     "react-error-overlay": "^1.0.9",
+    "react-icons": "^2.2.5",
     "react-modal": "^2.2.2",
     "react-redux": "^5.0.5",
     "react-test-renderer": "^15.6.1",

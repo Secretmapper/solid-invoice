@@ -3,9 +3,13 @@ import Wrapper from './Wrapper'
 import Header from './Header'
 import HeaderText from './HeaderText'
 import AddItem from './AddItem'
+import ItemContainer from './ItemContainer'
+import ActionContainer, { Button } from 'ActionContainer'
 import InvoiceItem from 'InvoiceItem'
 
-export default ({ items, addItem, changeItem, currency }) => (
+import TrashIcon from 'react-icons/lib/fa/trash-o'
+
+export default ({ items, addItem, changeItem, deleteItem, currency }) => (
   <Wrapper>
     <Header>
       <HeaderText width={[1 / 2, 1 / 2, 1 / 2, 1 / 2]} p={1}>
@@ -22,12 +26,18 @@ export default ({ items, addItem, changeItem, currency }) => (
       </HeaderText>
     </Header>
     {items.map((item, index) => (
-      <InvoiceItem
-        key={item.id}
-        item={item}
-        changeItem={changeItem}
-        currency={currency}
-      />
+      <ItemContainer key={item.id}>
+        <InvoiceItem
+          item={item}
+          changeItem={changeItem}
+          currency={currency}
+        />
+        <ActionContainer>
+          <Button danger onClick={e => deleteItem(item.id)}>
+            <TrashIcon />
+          </Button>
+        </ActionContainer>
+      </ItemContainer>
     ))}
     <AddItem onClick={addItem}>
       Add Item

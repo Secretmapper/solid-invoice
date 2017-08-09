@@ -4,6 +4,7 @@ import initialState from './__fixtures__/initialState'
 import itemReducer from './item'
 
 export { utils }
+const pluckId = ({ id }) => id
 
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -25,13 +26,26 @@ export default function (state = initialState, action) {
         ...state,
         items: [...state.items, itemReducer(undefined, action)]
       }
-    case 'ACTIVE_INVOICE_ITEM_CHANGE_FIELD':
+    case 'ACTIVE_INVOICE_ITEM_DELETE':
       const { id } = action.payload
+      const index = state.items.map(pluckId).indexOf(id)
 
+      if (index === -1) {
+        return state
+      } else {
+        return {
+          ...state,
+          items: [
+            ...state.items.slice(0, index),
+            ...state.items.slice(index + 1)
+          ]
+        }
+      }
+    case 'ACTIVE_INVOICE_ITEM_CHANGE_FIELD':
       return {
         ...state,
         items: state.items.map(
-          (item) => (item.id === id) ? itemReducer(item, action) : item
+          (item) => (item.id === action.payload.id) ? itemReducer(item, action) : item
         )
       }
     case 'ACTIVE_INVOICE_DOWNLOAD':
@@ -72,6 +86,10 @@ export const Actions = {
   }),
   activeInvoiceItemAdd: _ => ({
     type: 'ACTIVE_INVOICE_ITEM_ADD'
+  }),
+  activeInvoiceItemDelete: id => ({
+    type: 'ACTIVE_INVOICE_ITEM_DELETE',
+    payload: { id }
   }),
   activeInvoiceItemChangeField: (id, label, value) => ({
     type: 'ACTIVE_INVOICE_ITEM_CHANGE_FIELD',

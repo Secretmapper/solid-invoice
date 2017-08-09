@@ -54,9 +54,14 @@ export default class extends Component {
   }
 
   render () {
-    const { currency, items, activeInvoiceItemAdd, activeInvoiceItemChangeField } = this.props
-    const { fields: { logo } } = this.props
     const { onUpload } = this
+    const { currency, items } = this.props
+    const { fields: { logo } } = this.props
+    const {
+      activeInvoiceItemAdd,
+      activeInvoiceItemChangeField,
+      activeInvoiceItemDelete
+    } = this.props
 
     return (
       <InvoiceLayout
@@ -104,6 +109,7 @@ export default class extends Component {
           <InvoiceBreakdown
             items={items}
             addItem={activeInvoiceItemAdd}
+            deleteItem={activeInvoiceItemDelete}
             changeItem={activeInvoiceItemChangeField}
             currency={currency}
           />
