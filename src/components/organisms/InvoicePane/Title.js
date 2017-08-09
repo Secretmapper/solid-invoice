@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export default styled.h1`
   font-size: 1.7rem;
-  font-weight: 100;
+  font-weight: 300;
 
   margin: 5px 0;
 
