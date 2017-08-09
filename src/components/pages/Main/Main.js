@@ -5,6 +5,7 @@ export default styled.main`
   overflow: scroll;
   box-sizing: border-box;
   padding: 20px;
+  padding-top: 10px;
   width: 100%;
 
   @media screen and (min-width: 64em) {

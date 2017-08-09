@@ -1,9 +1,6 @@
 import styled from 'styled-components'
 
-export default styled.h1`
-  font-size: 1.7rem;
-  font-weight: 100;
-
+export default styled.div`
   margin: 5px 0;
 
   @media screen and (min-width: 40em) {
