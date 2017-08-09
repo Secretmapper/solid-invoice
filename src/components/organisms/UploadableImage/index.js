@@ -1,22 +1,21 @@
 import React from 'react'
-import { compose, withHandlers, withState } from 'recompose'
+import { compose, withHandlers } from 'recompose'
 import Dropzone from './Dropzone'
 import Label from './Label'
 import Image from './Image'
 
 export default compose(
-  withState('accepted', 'setAccepted', []),
   withHandlers({
-    onDrop: ({ setAccepted }) => (accepted, rejected) => {
-      setAccepted(accepted)
+    onDrop: ({ onUpload }) => (accepted) => {
+      onUpload(accepted[0])
     }
   })
-)(({ accepted, onDrop }) => (
+)(({ image, onDrop }) => (
   <Dropzone
     accept='image/jpeg, image/png'
     onDrop={onDrop}
   >
-    {accepted[0] && <Image src={accepted[0] && accepted[0].preview} />}
+    {image && <Image src={image} />}
     <Label>YOUR LOGO</Label>
   </Dropzone>
 ))

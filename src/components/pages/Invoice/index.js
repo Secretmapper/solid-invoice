@@ -40,8 +40,23 @@ export default class extends Component {
     }
   }
 
+  onUpload = file => {
+    const { activeInvoiceChangeField } = this.props
+
+    const reader = new window.FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = function () {
+      activeInvoiceChangeField('logo', reader.result)
+    }
+    reader.onerror = function (error) {
+      window.alert(error)
+    }
+  }
+
   render () {
     const { currency, items, activeInvoiceItemAdd, activeInvoiceItemChangeField } = this.props
+    const { fields: { logo } } = this.props
+    const { onUpload } = this
 
     return (
       <InvoiceLayout
@@ -55,7 +70,7 @@ export default class extends Component {
         }
         headerRight={
           <AlignRight>
-            <UploadableImage />
+            <UploadableImage image={logo} onUpload={onUpload} />
           </AlignRight>
         }
         business={

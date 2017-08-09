@@ -11,6 +11,7 @@ export default {
   currency: currencies['USD'],
   items: [],
   fields: {
+    logo: null,
     number: 1,
     businessFrom: null,
     businessTo: null,
