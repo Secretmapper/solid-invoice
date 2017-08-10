@@ -2,6 +2,7 @@
   "name": "solid-invoice",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://secretmapper.github.io/solid-invoice",
   "dependencies": {
     "@storybook/addon-centered": "^3.2.0",
     "autoprefixer": "7.1.1",
@@ -65,6 +66,8 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
